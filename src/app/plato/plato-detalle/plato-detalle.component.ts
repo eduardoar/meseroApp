@@ -9,7 +9,7 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./plato-detalle.component.css']
 })
 export class PlatoDetalleComponent implements OnInit {
-  id: number;
+  id: string;
   plato: Plato;
 
   constructor(private platoService: PlatoService, private route: ActivatedRoute, private router: Router) { }
@@ -18,15 +18,27 @@ export class PlatoDetalleComponent implements OnInit {
 
     this.route.params.subscribe((params: Params) =>{
       this.id = params['id'];
-      console.log(this.id);
-      this.plato = this.platoService.getPlatos()[this.id];
-      console.log(this.plato);
+      
+      //this.plato = this.platoService.getPlatos()[this.id];
+      
+      this.platoService.getPlato(this.id).subscribe(data =>{
+        this.plato = data;
+      })
+
     });
 
   }
 
   editarPlato(){
     this.router.navigate(['editar'], {relativeTo: this.route});
+  }
+
+
+  eliminarPlato(event: boolean, plato: Plato){
+    if(event){
+      this.platoService.eliminarPlato(plato);
+      this.router.navigate(['plato']);
+    }
   }
 
 }

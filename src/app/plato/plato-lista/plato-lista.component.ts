@@ -18,7 +18,15 @@ export class PlatoListaComponent implements OnInit {
     private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.platos = this.platoService.getPlatos();
+      this.platoService.platosCambio.subscribe(data =>{
+        this.platos = data;
+      });
+
+      this.platoService.getPlatos().subscribe(data =>{
+      this.platos = data;
+    }, (err) =>{
+      //this.platos = [];
+    });
   }
 
   crearNuevoPlato(){
