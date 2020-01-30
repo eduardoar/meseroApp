@@ -1,7 +1,8 @@
 import { Pedido } from './../_model/pedido';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 
-
+@Injectable()
 export class ConsultaService{
 
     private url: string = 'https:localhost:3000/consulta';

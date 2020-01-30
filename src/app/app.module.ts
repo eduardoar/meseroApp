@@ -25,6 +25,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ConfirmModalComponent } from './componentes/modal/confirm-modal/confirm-modal.component';
 
 import { ModalModule } from 'ngx-bootstrap';
+import { Ng2CompleterModule } from 'ng2-completer';
 
 
 @NgModule({
@@ -50,7 +51,8 @@ import { ModalModule } from 'ngx-bootstrap';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    Ng2CompleterModule
   ],
   providers: [
     PlatoService,
